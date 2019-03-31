@@ -9,7 +9,7 @@ if ((!filter_input(INPUT_POST, 'username'))
 }
 
 //connect to server and select database
-$mysqli = mysqli_connect("localhost", "cs264user", "letmein", "testDB");
+$mysqli = mysqli_connect("localhost", "SSKoreanAdmin", "letmein", "SSKoreanRestaurant");
 
 //For more info about mysqli functions, go to the site below:
 //http://www.w3schools.com/php/php_ref_mysqli.asp
@@ -22,7 +22,7 @@ $sql = "SELECT f_name, l_name FROM auth_users WHERE username = '".$_POST["userna
 //create and issue the query
 $targetname = filter_input(INPUT_POST, 'username');
 $targetpasswd = filter_input(INPUT_POST, 'password');
-$sql = "SELECT f_name, l_name FROM auth_users WHERE username = '".$targetname.
+$sql = "SELECT firstName, lastName FROM Customers WHERE username = '".$targetname.
         "' AND password = PASSWORD('".$targetpasswd."')";
 
 $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
@@ -32,8 +32,8 @@ if (mysqli_num_rows($result) == 1) {
 
 	//if authorized, get the values of f_name l_name
 	while ($info = mysqli_fetch_array($result)) {
-		$f_name = stripslashes($info['f_name']);
-		$l_name = stripslashes($info['l_name']);
+		$f_name = stripslashes($info['firstName']);
+		$l_name = stripslashes($info['lastName']);
 	}
 
 	
@@ -48,7 +48,7 @@ if (mysqli_num_rows($result) == 1) {
 	<p>".$f_name." ".$l_name." is authorized!</p>
 	<p>Authorized Users' Menu:</p>
 	<ul>
-	<li><a href=\"secretpage.php\">secret page</a></li>
+	<li><a href=\"OrderNow.php\">Order Now!</a></li>
 	</ul>
         </body>";
 } else {
