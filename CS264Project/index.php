@@ -35,7 +35,7 @@ li a:hover:not(.active) {
 </head>
 <body>
   <div style="background-color:red;">
-    <img src="logo1.png" alt="logo", style = "display: block; margin-left: auto; margin-right:auto"></img>
+    <img src="logo1.png" alt="logo"></img>
   </div>
 <ul style="text-align:center">
   <li><a class="active" href="start.html"  target="myframe">SS Korean Restaurant</a></li>
